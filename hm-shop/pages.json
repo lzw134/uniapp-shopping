@@ -1,0 +1,167 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index"
+		},
+		{
+			"path": "pages/news/news"
+		},
+		{
+			"path": "pages/cart/cart"
+		},
+		{
+			"path": "pages/cy-my/cy-my",
+			"style" : {
+			    "navigationBarTitleText":"个人中心"
+			}
+		},
+	    {
+            "path" : "pages/contact/contact",
+			"style" : {
+			    "navigationBarTitleText":"关于我们"
+			}
+        }
+        ,{
+            "path" : "pages/goods/goods",
+			"style":{
+			   "enablePullDownRefresh": true
+			}
+        }
+        ,{
+            "path" : "pages/pics/pics",
+			"style":{
+				"navigationBarTitleText": "社区图片"
+			}
+        }
+        ,{
+            "path" : "pages/videos/videos",
+			"style":{
+			    "navigationBarTitleText": "客服咨询",
+				"app-plus":{
+				    "softinputMode":"adjustResize"
+				}
+			}
+        }
+        ,{
+            "path" : "pages/news-detail/news-detail"    
+        }
+        ,{
+            "path" : "pages/good-detail/good-detail" 
+        },
+		{
+		    "path" : "pages/login/login",
+		    "style" : {
+		        "backgroundColor": "#f5f6f8",
+		        "navigationBarTitleText": "登录",
+		        "app-plus": {
+		        }
+		    }
+		}
+		,{
+		    "path" : "pages/find-pwd/find-pwd",
+		    "style" : {
+		        "navigationBarTitleText":"找回密码"
+		    }
+		}
+		,{
+		    "path" : "pages/reg/reg",
+		    "style" : {
+		        "navigationBarTitleText": "注册"
+		    }
+		}
+		,{
+		    "path" : "pages/reg-pwd/reg-pwd",
+		    "style" : {
+		        "navigationBarTitleText": "注册"
+		    }
+		}
+        ,{
+            "path" : "pages/order/order",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的订单"
+            }
+            
+        }
+        ,{
+            "path" : "pages/pay/pay",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "支付"
+            }
+            
+        }
+        ,{
+            "path" : "pages/address/address",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "添加地址"
+            }
+            
+        }
+        ,{
+            "path" : "pages/address_admin/address_admin",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "地址管理"
+            }
+            
+        }
+        ,{
+            "path" : "pages/wchat-login/wchat-login",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	// 如果您是通过uni_modules形式引入uView，可以忽略此配置
+	"easycom": {
+		"^u-(.*)": "@/uni_modules/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"globalStyle": {
+		/*设置标题栏字体颜色*/ 
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "万能商城",
+		/*设置标题栏背景颜色*/
+		"navigationBarBackgroundColor": "#b50e03",
+		"backgroundColor": "#F8F8F8"
+	},
+	/*tabBar是一个对象*/
+	"tabBar": {
+		"color": "#ccc", //tabBar 字体颜色
+		"selectedColor": "#b50e03", //tabBar 被选择选择颜色
+		"borderStyle": "black", //tabBar 上边框颜色
+		"backgroundColor": "#ffffff", //tabBar背景颜色
+		/* 最少2个 最多5个 导航项*/
+		"list": [{
+				//注意pagePath 路劲要和上面的包路劲一样
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "static/logo/home.png",
+				"selectedIconPath": "static/logo/home-active.png"
+			},
+			{
+				//注意pagePath 路劲要和上面的包路劲一样
+				"pagePath": "pages/news/news",
+				"text": "资讯",
+				"iconPath": "static/logo/news.png",
+				"selectedIconPath": "static/logo/news-active.png"
+			},
+			{
+				"pagePath": "pages/cart/cart",
+				"text": "购物车",
+				"iconPath": "static/logo/cart.png",
+				"selectedIconPath": "static/logo/cart-active.png"
+			},
+			{
+				"pagePath": "pages/cy-my/cy-my",
+				"text": "我的",
+				"iconPath": "static/logo/member.png",
+				"selectedIconPath": "static/logo/member-active.png"
+			}
+		]
+	}
+}

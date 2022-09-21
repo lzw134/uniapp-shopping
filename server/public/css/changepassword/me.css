@@ -1,0 +1,21 @@
+body { background: #FFF; }
+/*表单样式*/
+.input_text { height: 2rem; border: none; text-align: right; color: #999; font-size: 0.7rem; }
+.placeholder { color: #999; text-align: right; }
+/*登陆注册*/
+.login_reg { margin-top: 1rem; }
+.login_reg li { background: #FFF; border: 1px solid #ddd; margin-bottom: 0.5rem; overflow: hidden; height: 2rem; }
+.login_reg li i { color: #999; font-size: 0.8rem; padding-left: 0.2rem; padding-right: 0.25rem; }
+.login_reg li .input_text_user { height: 2rem; border: none; text-align: left; color: #999; width: 11.5rem; font-size: 0.7rem; }
+.login_reg li .input_text_password { height: 2rem; border: none; text-align: left; color: #999; width: 11rem; font-size: 0.7rem; }
+.login_reg li .placeholder { color: #999; text-align: left; }
+.login_reg li .eyes_box { display: inline-block; width: 1.5rem; text-align: right; }
+.login_reg li .wenz { padding-left: 0.25rem; font-size: 0.7rem; color: #333; }
+.login_reg li .w180 { width: 9rem; margin-left: 1rem; }
+.login_reg .denglu_but { height: 2rem; line-height: 2rem; width: 15rem; display: block; font-size: 0.8rem; background: #00B4C9; color: #fff; border-radius: 0.25rem; text-align: center; margin: 1rem auto 0.25rem auto; }
+ .input_text_user::-webkit-input-placeholder, .input_text_password::-webkit-input-placeholder {
+color:#999;
+}
+.input_text_user::-moz-placeholder, .input_text_password::-moz-placeholder {
+color:#999;
+}

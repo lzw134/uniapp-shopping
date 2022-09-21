@@ -1,0 +1,184 @@
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+<title>设置头像</title>
+<link rel="stylesheet" type="text/css" href="/css/changehead/aui.css">
+<link rel="stylesheet" href="/css/changehead/intial.css">
+<style type="text/css">
+			*{
+				font-family: "黑体";
+			}
+			body,html{
+				height: 100%;
+				overflow: auto;
+			}
+			html{ background-color: hsla(0,0%,96%,1.00); 
+			}
+			body{
+				background: none;
+			}
+			section{
+				padding-top: 3rem;
+				font-size: 0.9rem;
+			}
+			#headimg{
+				width: 12rem;
+				height: 12rem;
+				border: 2px solid #ffffff;
+				border-radius:100% ;
+				margin: auto;
+				margin-bottom: 1.7rem;
+				background-size:100% 100% !important;
+				background-repeat:no-repeat;
+				background-position: center center;
+			}
+			.btn{
+				position: relative;
+				z-index: 10;
+				padding: 0.5rem;
+				height: 1.6rem;
+				line-height: 1.6rem;
+				margin: auto;
+				font-size: 0.8rem;
+				color: #fd1142!important;
+				border:1px solid  #fd1142;
+				border-radius:0.2rem ;
+			}
+			.btn img{
+				display: inline-block;
+				width: 0.75rem;
+				margin-left: 0.1rem;
+			}
+			
+			
+			/*截图上传页面*/
+			.clipbg{
+				position: fixed;
+				background: black;
+				top: 0;
+				z-index: 999;
+				width: 100%;
+				height: 100%;
+				left: 0;
+			}
+			.loading{
+				position: absolute;
+				top: 40%;
+				width: 38%;
+				left: 31%;
+				height: 1.6rem;
+				line-height: 1.6rem;
+				z-index: 99999;
+				text-align: center;
+				color: #ffffff;
+				border-radius:0.2rem ;
+				background: #9f9f9f;
+			}
+			.clipbg #clipArea{
+				width: 100%;
+				height: 80%;
+				margin: auto;
+
+			}
+			.clipbg .footer{
+				width: 90%;
+				position: fixed;
+				left: 5%;
+				bottom: 0px;
+				text-align: center;
+			}
+			.clipbg dl{
+				background: #ffffff;
+				border-radius: 0.4rem;
+				overflow: hidden;
+				margin-bottom: 0.6rem;
+			}
+			.clipbg dd{
+				position: relative;
+				height: 2.25rem;
+				line-height: 2.25rem;
+				border-bottom:1px solid #999999 ;
+			}
+			.clipbg .back{
+				height: 2.25rem;
+				line-height:2.25rem;
+				border-radius: 0.4rem;
+				margin-bottom: 0.4rem;
+				background: #ffffff;
+			}
+			.clipbg dd input{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				z-index: 11;
+				filter:alpha(opacity=0);  
+			  -moz-opacity:0;  
+			  -khtml-opacity: 0;  
+			  opacity: 0; 
+			}
+			#headimg img{
+				width:100%;
+				height:100%;
+				border-radius:100%;
+			}
+		</style>
+</head>
+<body>
+<section class="aui-text-center">
+<div id="headimg">
+<img id="tx" src="<%=pic%>">
+</div>
+<span class="btn">
+点击设置头像
+</span>
+</section>
+
+<div class="clipbg displaynone">
+<div id="clipArea"></div>
+<div class="loading displaynone">正在载入图片...</div>
+<div class="footer">
+<dl>
+<form action="/admin/home/head_save" method="post" enctype="multipart/form-data">
+<dd style="background: #fe1041; color: #ffffff;border: none;">打开相册<input type="file" name="file" id="file" accept="image/*"></dd>
+<dd id="clipBtn"><input type="submit" id="btn">点击提交</input></dd>
+</form>
+</dl>
+<div class="back">取消</div>
+</div>
+</div>
+
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="/js/changehead/hammer.min.js"></script>
+<script type="text/javascript" src="/js/changehead/lrz.all.bundle.js"></script>
+<script type="text/javascript" src="/js/changehead/iscroll-zoom-min.js"></script>
+<script type="text/javascript" src="/js/changehead/PhotoClip.js"></script>
+<script>
+		$(".btn").click(function(){
+			$(".clipbg").fadeIn()
+		})
+		var clipArea = new  PhotoClip("#clipArea", {
+				size: [300, 300],//裁剪框大小
+				outputSize:[0,0],//打开图片大小，[0,0]表示原图大小
+				file: "#file",
+				ok: "#btn",
+				loadStart: function() { //图片开始加载的回调函数。this 指向当前 PhotoClip 的实例对象，并将正在加载的 file 对象作为参数传入。（如果是使用非 file 的方式加载图片，则该参数为图片的 url）
+					$(".loading").removeClass("displaynone");
+
+				},
+				loadComplete: function() {//图片加载完成的回调函数。this 指向当前 PhotoClip 的实例对象，并将图片的 <img> 对象作为参数传入。
+					$(".loading").addClass("displaynone");
+
+				},
+				done: function(dataURL){ //裁剪完成的回调函数。this 指向当前 PhotoClip 的实例对象，会将裁剪出的图像数据DataURL作为参数传入。			
+					$('#btn').attr("src",dataURL);
+					//$(".clipbg").fadeOut()
+				}
+			});
+			$(".back").click(function(){
+				$(".clipbg").fadeOut()
+			})
+	</script>
+
+</body></html>

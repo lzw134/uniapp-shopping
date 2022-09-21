@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+    <title>后台管理系统</title>
+
+    <link href="/css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
+    <link href="/css/font-awesome.min.css?v=4.3.0" rel="stylesheet">
+
+    <!-- Data Tables -->
+    <link href="/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+
+    <link href="/css/animate.min.css" rel="stylesheet">
+    <link href="/css/style.min.css?v=3.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                  添加分类
+                                              </button>
+                                             
+                   <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+                       <div class="modal-dialog">
+                           <div class="modal-content animated bounceInRight">
+                               <div class="modal-header">
+                                   <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span>
+                                   </button>
+                                   <i class="fa fa-laptop modal-icon"></i>
+                                   <h4 class="modal-title">管理系统</h4>
+                                   <small class="font-bold">分类添加
+                                   </small></div>
+                                   <small class="font-bold">
+                                   <div class="modal-footer">
+                                       <form action="/admin/class/add_list" method="post" enctype="multipart/form-data">
+                                       <div class="form-group">
+                                           <label class="col-sm-3 control-label">分类名称：</label>
+                                           <div class="col-sm-9">
+                                               <input type="text" name="text" placeholder="分类名称" class="form-control"> 
+                                               <span class="help-block m-b-none"></span>
+											   <span class="help-block m-b-none"></span>
+                                           </div>                                              
+                                       </div>
+                                       <div class="form-group">
+                                           <label class="col-sm-3 control-label">分类图片：</label>
+                                           <div class="col-sm-9">
+                                               <input type="file" name="good_pic" onchange="show_insert(this)"/>
+											    <span class="help-block m-b-none"></span>
+												<span class="help-block m-b-none"></span>
+                                           </div>                                               
+                                       </div>
+									   <div class="form-group">
+									       <label class="col-sm-3 control-label">分类级别：</label>
+										       <div class="col-sm-6">
+									           <select name="good_id" class="form-control">
+												     <option value="0">请选择分类</option>
+												     <% for(let i=0;i<nesting.length;i++) { %>
+													       <option value="<%=nesting[i].id%>"><%=nesting[i].text%></option>
+													 <% } %>
+											   </select>
+											   </div>
+									           <span class="help-block m-b-none"></span>                                             
+									   </div>
+									   <div class="form-group">
+									        <div class="col-sm-12">
+									        <input type="submit" class="btn btn-outline btn-success  dim" value="保存"/>                  
+									        </div>
+									   </div>
+                                       
+                                       </form>
+                                  </div>
+                               </small></div><small class="font-bold">
+                           </small></div><small class="font-bold">
+                       </small></div>
+                    </div>
+                    <div class="ibox-content">
+
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>分类名称</th>
+                                    <th>分类图片</th>
+									<th>添加时间</th>
+									<th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                          <% for(let i=0;i<nesting.length;i++) { %>
+                                <tr class="gradeX">
+								    
+                                    <td><%=i+1%></td>
+									<td><%=nesting[i].text%></td>
+                                    <td><img style="width: 100px;" src="<%=nesting[i].good_pic%>" alt=""></td>
+									<td><%=nesting[i].add_time%></td>
+                                    <td>
+								    
+									
+									<div class="modal inmodal" id="<%=nesting[i].id%>" tabindex="-1" role="dialog" aria-hidden="true">
+									    <div class="modal-dialog">
+									        <div class="modal-content animated bounceInRight">
+									            <div class="modal-header">
+									                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span>
+									                </button>
+									                <i class="fa fa-laptop modal-icon"></i>
+									                <h4 class="modal-title">管理系统</h4>分类修改
+									                </small></div>
+									                <small class="font-bold">
+									                <div class="modal-footer">
+									                    <form action="/admin/class/update_list" method="post" enctype="multipart/form-data">
+									                   <div class="form-group">
+									                       <label class="col-sm-3 control-label">分类名称:</label>
+									                       <div class="col-sm-9">
+									                           <input type="text" name="text" value="<%=nesting[i].text.replace(/^\s+|\s+$/g,"");%>" class="form-control"> 
+															   <input type="hidden" name="id" value="<%=nesting[i].id%>">
+									                           <span class="help-block m-b-none"></span>
+									                   			<span class="help-block m-b-none"></span>
+									                       </div>                                              
+									                   </div>
+									                   <div class="form-group">
+									                       <label class="col-sm-3 control-label">分类图片：</label>
+									                       <div class="col-sm-9">
+									                          <input type="file" name="good_pic" onchange="show_update_<%=nesting[i].id%>(this)"/>
+									                          <img id="img_update<%=nesting[i].id%>" src="" style="width:100px;height:50px"></img>
+									                   		  <span class="help-block m-b-none"></span>
+									                   		  <span class="help-block m-b-none"></span>
+									                       </div>                                               
+									                   </div>
+									                   <div class="form-group">
+									                       <label class="col-sm-3 control-label">分类级别：</label>
+									                   		<div class="col-sm-6">
+									                           <select name="good_id" class="form-control">
+									                   			<option value="<%=nesting[i].good_id%>"><%=nesting[i].text%></option>
+									                   			<% for(let i=0;i<nesting.length;i++) { %>
+									                   			<option value="<%=nesting[i].id%>"><%=nesting[i].text%></option>
+									                   			<% } %>
+									                   			</select>
+									                   			</div>
+									                           <span class="help-block m-b-none"></span>                                             
+									                   </div>
+									                   <div class="form-group">
+									                        <div   class="col-sm-12">
+									                        <input type="submit" class="btn btn-outline btn-success  dim" value="修改"/>                  
+									                        </div>
+									                   </div>
+									                    </form>
+									               </div>
+									            </small></div><small class="font-bold">
+									        </small></div><small class="font-bold">
+									    </small></div>
+									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<%=nesting[i].id%>" >
+									          修改
+									</button>
+                                    <a href="/admin/class/delete_list?id=<%=nesting[i].id%>"><button class="btn btn-danger" type="button"><i class="fa fa-danger">删除</i></button></a>
+                                 </td>
+                             </tr>
+							 
+							 <% } %>
+							
+                            </tbody>
+                          
+                        </table>
+
+                           <div>
+                          
+
+                           </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+
+    <!-- 全局js -->
+    <script src="/js/jquery-2.1.1.min.js"></script>
+    <script src="/js/bootstrap.min.js?v=3.4.0"></script>
+    
+	<script>
+	<%for (var i = 0;i<nesting.length;i++){%>
+	function show_update_<%=nesting[i].id%>(file){	
+					var reader = new FileReader();	// 实例化一个FileReader对象，用于读取文件
+					var img = document.getElementById('img_update<%=nesting[i].id%>'); 	// 获取要显示图片的标签	
+					//读取File对象的数据
+					reader.onload = function(evt){
+						img.width  =  "120";
+				        img.height =  "80";
+						img.src = evt.target.result;
+					}
+				    reader.readAsDataURL(file.files[0]);
+    }
+	<%}%>
+	function show_insert(file){
+					var reader = new FileReader();	// 实例化一个FileReader对象，用于读取文件
+					var img = document.getElementById('img_insert'); 	// 获取要显示图片的标签
+					
+					//读取File对象的数据
+					reader.onload = function(evt){
+						img.width  =  "120";
+				        img.height =  "80";
+						img.src = evt.target.result;
+					}
+				    reader.readAsDataURL(file.files[0]);
+	}
+	</script>
+
+
+    <script src="/js/plugins/jeditable/jquery.jeditable.js"></script>
+
+    <!-- Data Tables -->
+    <!-- <script src="public/admin/js/plugins/dataTables/jquery.dataTables.js"></script> -->
+    <!-- <script src="public/admin/js/plugins/dataTables/dataTables.bootstrap.js"></script> -->
+
+    <!-- 自定义js -->
+    <script src="/js/content.min.js?v=1.0.0"></script>
+
+
+    <!-- Page-Level Scripts -->
+    <script>
+       $(document).ready(function(){$(".dataTables-example").dataTable();var a=$("#editable").dataTable();a.$("td").editable("../example_ajax.php",{"callback":function(d,c){var b=a.fnGetPosition(this);a.fnUpdate(d,b[0],b[1])},"submitdata":function(c,b){return{"row_id":this.parentNode.getAttribute("id"),"column":a.fnGetPosition(this)[2]}},"width":"90%","height":"100%"})});function fnClickAddRow(){$("#editable").dataTable().fnAddData(["Custom row","New row","New row","New row","New row"])};
+    </script>
+
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+    <!--统计代码，可删除-->
+    
+	<!--jquery传值-->
+	<script>
+	    function  getvalue(id,store_id){
+			
+		}
+		function c(v)
+		{
+		  var reader = new FileReader();
+		        reader.onload = function (evt) {
+		            $(v).after('<img src="' + evt.target.result + '" />');
+		        }
+		        reader.readAsDataURL(v.files[0]);
+		
+		
+		}
+	<script>
+</body>
+
+</html>

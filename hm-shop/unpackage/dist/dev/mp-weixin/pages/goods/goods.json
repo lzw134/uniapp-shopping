@@ -1,0 +1,6 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "goodslist": "/components/goods-list"
+  }
+}

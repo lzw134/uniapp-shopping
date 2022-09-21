@@ -1,0 +1,73 @@
+* { padding: 0; margin: 0; }
+body { background: #f2f2f2; font-family:"微软雅黑"; min-width: 320px; max-width: 640px; margin: 0 auto; }
+ul, li { list-style: none; }
+i, em { font-style: normal; }
+img { border: none; margin: 0; padding: 0; }
+a { text-decoration: none; color: #333; }
+a:focus { outline: none; }
+.clear { clear: both }
+.clear_wl:after { content: "."; height: 0; visibility: hidden; display: block; clear: both; }
+.fl { float: left }
+.fr { float: right }
+.text_c { text-align: center; }
+/*主色调*/ 
+.bule_color { color: #00b4c9; }
+/*辅助色*/
+.hs_color { color: #FE9F07; }
+.green_color { color: #85c860; }
+.c333 { color: #333; }
+.c666 { color: #666; }
+.c999 { color: #999; }
+.f10 { font-size: 0.5rem; }
+.f11 { font-size: 0.55rem; }
+.f12 { font-size: 0.6rem; }
+.f14 { font-size: 0.7rem; }
+.f16 { font-size: 0.8rem; }
+.f18 { font-size: 0.9rem; }
+.all_wap { width: 15.5rem; margin-left: 0.5rem; }
+.all_center_box { width: 15rem; margin: 0 auto; }
+.footheight { height: 2.4rem; }
+.mb5 { margin-bottom: 0.25rem; }
+/*三种头部样式111111111*/
+.heard_top { width: 100%; background: #00b4c9; color: #fff; position: relative; z-index: 2; height: 2.2rem; line-height: 2.2rem; }
+.heard_top .top_table { width: 15rem; margin: 0 auto; }
+.heard_top .top_table td { width: 50%; font-size: 0.6rem; }
+.heard_top .top_table td .dw_a_but { display: block; height: 2.2rem; color: #fff; width: 30%; }
+.heard_top .top_table td .map_dw { color: #fff; font-size: 0.7rem; }
+.heard_top .top_texte { position: absolute; z-index: 22; top: 0; left: 50%; text-align: center; width: 9.5rem; margin-left: -4.75rem; font-size: 0.8rem; }
+/**/
+.heard_top .top_texte .xieh_title_list{ width:7rem; margin:0 auto; border:1px solid #e6f8fa; border-radius:0.25rem; height:1.4rem; line-height:1.4rem; text-align:center; overflow:auto; margin-top:0.4rem;}
+.heard_top .top_texte .xieh_title_list li{ width:50%; float:left; }
+.heard_top .top_texte .xieh_title_list li a{ display:block;color:#e6f8fa; font-size:0.7rem;}
+.heard_top .top_texte .xieh_title_list li.on a{ background:#e6f8fa; color:#00b4c9;}
+
+
+
+
+/*1像素*/
+.scale { position: relative; }
+.scale:after { content: ""; position: absolute; bottom: 0px; left: 0px; right: 0px; border-bottom: 1px solid #ddd; -webkit-transform: scaleY(.5); -webkit-transform-origin: 0 0; }
+/*底部*/
+.ky_footer { width: 100%; background: #f8f8f8; position: fixed; z-index: 999; bottom: 0; left: 0; overflow: hidden; /* border: 1px solid #cfcfcf;*/ }
+.ky_footer ul { width: 100%; height: auto; overflow: hidden; }
+.ky_footer ul li { float: left; width: 25%; padding: 0.2rem 0 }
+.ky_footer ul li a { font-size: 0.55rem; text-align: center; width: 100%; display: block; color: #949494; }
+.ky_footer ul li a i { font-size: 1.1rem; color: #949494; width: 100%; display: block; text-align: center; overflow: hidden; }
+.ky_footer ul li.selected i, .ky_footer ul li.selected a { color: #00b4c9 }
+a, button, input { -webkit-tap-highlight-color: rgba(255,0,0,0); }/* 1.去除android a/button/input标签被点击时产生的边框 2.去除ios a标签被点击时产生的半透明灰色背景 */
+.ky_footer .scale:after { content: ""; position: absolute; top: 0px; left: 0px; right: 0px; border-bottom: 1px solid #ddd; -webkit-transform: scaleY(.5); -webkit-transform-origin: 0 0; }
+/*列表通用*/
+.wntj_list li { /*border-bottom:0.5px solid #e3e3e3;*/ font-size: 0.6rem; padding: 0.25rem 0.5rem 0.5rem 0; }
+.wntj_list li:last-child { border-bottom: none; }
+.wntj_list li h4 { overflow: hidden; height: auto; font-size: 0.7rem; margin-bottom: 0.25rem; font-weight: 400; }
+.wntj_list li p { height: auto; overflow: hidden; color: #333; margin-bottom: 0.25rem; }
+.wntj_list li .gsfl_tb { height: auto; }
+.wntj_list li .gsfl_tb span { font-size: 0.5rem; border: 1px solid #3D99FF; border-radius: 3px; color: #3D99FF; padding: 0 0.25rem; margin-right: 0.25rem; }
+/*图片模糊*/
+.blur_mh { filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */ -webkit-filter: blur(10px); /* Chrome, Opera */ -moz-filter: blur(10px); -ms-filter: blur(10px); filter: blur(10px);  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+}
+
+/*清空input内容*/
+.clear_input { display: none; position: absolute; width:0.8rem; height: 0.8rem; border-radius:50%; margin: 0.6rem 0 0 0.75rem; outline: none; background:#CCC ; font-size:0.6rem; color:#fff; text-align:center;  }
+.ClearInput::-ms-clear { display: none; }
+.ClearInput:valid + .clear_input { display: inline; }

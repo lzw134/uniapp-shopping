@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title>H+ 后台主题UI框架 - 基本表单</title>
+    <link href="/css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
+    <link href="/css/font-awesome.min.css?v=4.3.0" rel="stylesheet">
+    <link href="/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/css/animate.min.css" rel="stylesheet">
+    <link href="/css/style.min.css?v=3.1.0" rel="stylesheet">
+	<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+     
+   
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+
+                    <div class="ibox-content">
+                        <form method="post" action="/admin/good/good_update" class="form-horizontal" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">商品名称</label>
+                                <div class="col-sm-10">
+									<input type="hidden" name="id" value="<%=result.id%>">
+                                    <input type="text" name="good_name" class="form-control" style="width: 350px;" value="<%=result.good_name%>">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+							<div class="form-group">
+							    <label class="col-sm-2 control-label">商品描述</label>
+							    <div class="col-sm-10">
+							        <input type="text" name="good_describe" class="form-control" style="width: 350px;" value="<%=result.good_describe%>">
+							    </div>
+							</div>
+							<div class="hr-line-dashed"></div>
+							
+							
+							<div class="hr-line-dashed"></div>
+							<div class="form-group">
+							    <label class="col-sm-2 control-label">商品图片</label>
+							    <div class="col-sm-10">
+									<!--multiple="multiple"-->
+							        <input type="file" name="goods_pic" class="form-control" style="width: 350px;"  multiple="multiple">
+							    </div>
+							</div>
+							<div class="hr-line-dashed"></div>
+							
+							<div class="form-group">
+							    <label class="col-sm-2 control-label">商品销量</label>
+							    <div class="col-sm-10">
+							        <input type="text" name="good_sales" class="form-control" style="width: 350px;" value="<%=result.good_sales%>">
+							    </div>
+							</div>
+							<div class="hr-line-dashed"></div>
+							
+							<div class="form-group">
+							    <label class="col-sm-2 control-label">原价</label>
+							    <div class="col-sm-10">
+							        <input type="text" name="old_price" class="form-control" style="width: 350px;" value="<%=result.old_price%>">
+							    </div>
+							</div>
+							<div class="hr-line-dashed"></div>
+							
+							<div class="form-group">
+							    <label class="col-sm-2 control-label">现价</label>
+							    <div class="col-sm-10">
+							        <input type="text" name="new_price" class="form-control" style="width: 350px;" value="<%=result.new_price%>">
+							    </div>
+							</div>
+							<div class="hr-line-dashed"></div>
+							
+					        <div class="form-group">
+					            <label class="col-sm-2 control-label">收货地址</label>
+					            <div class="col-sm-10">
+					                <input type="text" name="good_address" class="form-control" style="width: 350px;" value="<%=result.good_address%>">
+					            </div>
+					        </div>
+					        <div class="hr-line-dashed"></div>
+					        
+							
+
+							
+							<div class="form-group">
+							    <label class="col-sm-2 control-label">是否有货</label>
+							    <div class="col-sm-10">
+							        <input type="text" name="good_flog"  class="form-control" style="width: 350px;" value="<%=result.good_flog%>">
+							    </div>
+							</div>
+						
+									
+						<div class="hr-line-dashed"></div>
+						
+						<div class="form-group">
+						    <label class="col-sm-2 control-label">商品分类</label>
+						    <div class="col-sm-10">
+								<select name="good_id" class="form-control" style="width: 350px;">
+										<option value="<%=result.good_id%>">请选择分类</option>
+											<% for(let i=0;i<nesting.length;i++) { %>
+												<option value="<%=nesting[i].id%>"><%=nesting[i].text%></option>
+										    <% } %>
+								</select>
+						    </div>
+						</div>
+						
+						<div class="hr-line-dashed"></div>
+						<div class="form-group">
+						    <label class="col-sm-2 control-label">商品详情</label>
+						    <div class="col-sm-10">
+								<textarea id="text1" name="good_details" style="display:none;"></textarea>
+								<div id="wangEditor"></div>		
+						    </div>
+						</div>
+						<div class="hr-line-dashed"></div>
+						
+						
+						   <div class="form-group">
+						       <div class="col-sm-4 col-sm-offset-2">
+						           <button class="btn btn-primary" type="submit">保存内容</button>
+						           <button class="btn btn-white" type="submit">取消</button>
+						       </div>
+						   </div>
+						   </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局js -->
+    <script src="/js/jquery-2.1.1.min.js"></script>
+    <script src="/js/bootstrap.min.js?v=3.4.0"></script>
+
+    <!-- 自定义js -->
+    <script src="/js/content.min.js?v=1.0.0"></script>
+
+    <!-- iCheck -->
+    <script src="/js/plugins/iCheck/icheck.min.js"></script>
+    
+	<!--创建wangEditor-->
+	<script type="text/javascript" src="/js/wangEditor/wangEditor.min.js"></script>
+	<script type="text/javascript">
+	    const E = window.wangEditor
+	    const editor = new E('#wangEditor')
+		const $text1 = $('#text1')
+		//editor.config.uploadImgShowBase64 = true
+	    // 或者 const editor = new E( document.getElementById('div1') )	
+		editor.config.uploadImgServer = '/admin/good/img_insert'
+		editor.config.uploadFileName = 'good_details'
+		//限制图片上传的类型
+		editor.config.uploadImgAccept = ['jpg', 'jpeg', 'png', 'gif', 'bmp']
+		//限制图片上传的大小
+		editor.config.uploadImgMaxSize = 2 * 1024 * 1024 // 2M
+		//限制一次只能上传几张图片
+		editor.config.uploadImgMaxLength = 3// 一次最多上传 3 个图片
+		
+		 editor.config.onchange = function (html) {
+		        // 第二步，监控变化，同步更新到 textarea
+		        $text1.val(html)
+		    }    
+
+	    editor.create()     
+		
+		$text1.val(editor.txt.html('<%-result.good_details%>'))
+	</script>
+
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+    <!--统计代码，可删除-->
+
+</body>
+
+</html>

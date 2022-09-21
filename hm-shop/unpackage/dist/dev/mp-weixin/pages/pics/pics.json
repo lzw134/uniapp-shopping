@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "社区图片",
+  "usingComponents": {
+    "menus": "/pages/pics/components/menu",
+    "goods-list": "/pages/pics/components/list"
+  }
+}
